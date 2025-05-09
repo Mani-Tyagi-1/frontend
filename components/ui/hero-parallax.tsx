@@ -8,17 +8,16 @@ import {
   MotionValue,
 } from "motion/react";
 
-// Warm color palette - yellow, orange, and reddish tones
+// Blue and purple color palette
 const colors = {
-  primary: "#f59e0b", // Amber
-  secondary: "#ea580c", // Orange
-  accent: "#ef4444", // Red
-  highlight: "#fb923c", // Light orange
-  background: "#fffbeb", // Amber 50 (light background)
-  textDark: "#7c2d12", // Orange 900 (dark text)
-  textMedium: "#9a3412", // Orange 800 (medium text)
-  textLight: "#fdba74", // Orange 300 (light text)
-  gradient: "linear-gradient(to right, #f59e0b, #ea580c, #ef4444)",
+  primary: "#4f46e5", // Indigo
+  secondary: "#8b5cf6", // Purple
+  accent: "#a78bfa", // Light purple
+  highlight: "#c4b5fd", // Lighter purple
+  background: "#f8fafc", // Light background
+  textDark: "#1e293b", // Slate-800
+  textMuted: "#475569", // Slate-600
+  overlay: "#312e81", // Indigo-900
 };
 
 export const HeroParallax = ({
@@ -68,7 +67,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-amber-50"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-gradient-to-b from-indigo-50 to-purple-50"
     >
       <Header />
       <motion.div
@@ -115,11 +114,11 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-5xl font-bold text-orange-900">
+      <h1 className="text-2xl md:text-5xl font-bold text-indigo-900 bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">
         NURTURE CHILDCARE AND EDUCATION SERVICES. <br />
         WHERE YOU WILL FIND A NURTURING AND CREATIVE WORLD
       </h1>
-      <p className="max-w-5xl text-base md:text-xl mt-8 text-orange-800">
+      <p className="max-w-5xl text-base md:text-xl mt-8 text-purple-900">
         At NURTURE CHILDCARE AND EDUCATION SERVICES, we know what it takes to
         enhance our children's education with lots of Love, Play & Vigilant
         Care. Our unique approach to Caring and top quality Family Day Care
@@ -152,9 +151,12 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-96 w-[30rem] relative shrink-0 rounded-xl overflow-hidden shadow-lg shadow-indigo-200/50"
     >
-      <a href={product.link} className="block group-hover/product:shadow-2xl">
+      <a
+        href={product.link}
+        className="block group-hover/product:shadow-2xl group-hover/product:shadow-purple-300"
+      >
         <img
           src={product.thumbnail}
           height="600"
@@ -163,8 +165,8 @@ export const ProductCard = ({
           alt={product.title}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-gradient-to-br from-amber-600 to-red-600 pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-amber-50 font-medium">
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-gradient-to-t from-indigo-900 to-purple-900 pointer-events-none transition-opacity duration-300"></div>
+      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-purple-100 font-semibold text-lg transition-opacity duration-300">
         {product.title}
       </h2>
     </motion.div>

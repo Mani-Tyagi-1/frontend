@@ -1,60 +1,54 @@
 "use client";
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
-import { cn } from "@/lib/utils";
+import { useState } from "react";
+import Link from "next/link";
 
-export default function  Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+const navLinks = [
+  { name: "HOME", href: "/" },
+  { name: "ABOUT", href: "/about" },
+  { name: "SERVICES", href: "/services" },
+  { name: "MEMBERS", href: "/projects" },
+  { name: "EDUCATORS", href: "/reviews" },
+  { name: "GUIDE", href: "/blog" },
+  { name: "CONTACT", href: "/contact" },
+];
+
+export default function Navbar() {
+  const [active, setActive] = useState("HOME");
+
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
-    >
-      <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Home">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Policies">
-          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-            <ProductItem
-              title="Algochurn"
-              href="https://algochurn.com"
-              src="https://assets.aceternity.com/demos/algochurn.webp"
-              description="Prepare for tech interviews like never before."
-            />
-            <ProductItem
-              title="Tailwind Master Kit"
-              href="https://tailwindmasterkit.com"
-              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-              description="Production ready Tailwind css components for your next project"
-            />
-            <ProductItem
-              title="Moonbeam"
-              href="https://gomoonbeam.com"
-              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-              description="Never write from scratch again. Go from idea to blog in minutes."
-            />
-            <ProductItem
-              title="Rogue"
-              href="https://userogue.com"
-              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            />
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="NewsLetter">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-          </div>
-        </MenuItem>
-      </Menu>
-    </div>
+    <nav className="w-full px-6 py-4 fixed top-0 z-50 flex justify-between items-center backdrop-blur-lg bg-black/30 rounded-b-xl shadow-lg">
+      {/* Logo */}
+      <div className="flex items-center space-x-2">
+        {/* <img src="/logo.png" alt="Logo" className="h-8" /> */}
+        <span className="text-white font-bold text-3xl">NC & ES</span>
+      </div>
+
+      {/* Nav Links */}
+      <div className="flex items-center space-x-6 px-6 py-2 bg-black/40 backdrop-blur-md rounded-full shadow-inner">
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            onClick={() => setActive(link.name)}
+            className={`relative text-sm font-semibold transition duration-300 ease-in-out px-3 py-2 rounded-full 
+              ${
+                active === link.name
+                  ? "text-[#F58327] bg-white/10"
+                  : "text-white hover:text-orange-400 hover:bg-white/5"
+              }`}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Template Button */}
+      <a
+        href="/template"
+        className="ml-4 text-xl px-5 py-2 rounded-full bg-[#F58327] font-semibold text-black transition duration-300 ease-in-out hover:scale-105 hover:bg-orange-400 shadow-md"
+      >
+        LOGIN / SIGNUP ↗
+      </a>
+    </nav>
   );
 }

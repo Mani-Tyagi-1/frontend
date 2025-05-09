@@ -1,102 +1,68 @@
 "use client";
-import React from "react";
-import { HeroParallax } from "../../components/ui/hero-parallax";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import AnimatedDotsBackground from "./AnimatedBg"; // Adjust path if necessary
+import { ShootingStars } from "./shooting-stars";
+import { StarsBackground } from "./stars-background";
 
-export default function HeroParallaxDemo() {
-  return <HeroParallax products={products} />;
+export default function Hero() {
+  return (
+    <section className="relative w-full h-screen flex flex-col items-center justify-center text-center bg-black overflow-hidden">
+      {/* Animated dots background */}
+      {/* <AnimatedDotsBackground /> */}
+      <ShootingStars />
+      <StarsBackground />
+
+      {/* Removed the original background effect line: */}
+      {/* <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10 z-0" /> */}
+
+      <motion.h1
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-5xl md:text-7xl font-bold text-white z-10 text-center leading-tight"
+      >
+        NURTURE
+        <span className="relative inline-block ml-8">
+          <span className="absolute -top-2 -left-2 rotate-2 px-2 py-1 bg-[#F58327] text-black font-bold z-0">
+            CHILDCARE
+          </span>
+          <span className="invisible">Digital</span>{" "}
+          {/* This was likely for spacing, keeping it */}
+        </span>{" "}
+        <br />
+        AND EDUCATION SERVICES.
+        {/* <span className="inline-flex items-center justify-center">
+          Agency.
+          <span className="ml-3 bg-orange-500 rounded-full p-2">
+            <Image
+              src="/megaphone.png"
+              alt="Megaphone"
+              width={24}
+              height={24}
+            />
+          </span>
+        </span> */}
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.3 }}
+        className="mt-6 text-gray-300 text-lg z-10 max-w-xl"
+      >
+        A Community of Passionate Family Day Care Educators and Learners
+      </motion.p>
+
+      <motion.a
+        href="/template"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.4, delay: 0.5 }}
+        className="mt-10 inline-block px-8 py-3 rounded-full bg-[#F58327] text-black font-semibold text-lg hover:bg-orange-500 transition transform hover:scale-105 shadow-lg"
+      >
+        Explore ↗
+      </motion.a>
+    </section>
+  );
 }
-export const products = [
-  {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail:
-      "https://i.pinimg.com/736x/fb/dd/ba/fbddba800f4b10b4b6dc93a9a102ec25.jpg",
-  },
-  {
-    title: "Cursor",
-    link: "https://cursor.so",
-    thumbnail:
-      "https://i.pinimg.com/736x/bb/ba/86/bbba86da4190f5c49c217e2fa2819374.jpg",
-  },
-  {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail:
-      "https://i.pinimg.com/736x/e2/8b/78/e28b785ba866d17631a520a6063fb8eb.jpg",
-  },
-
-  {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-  {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-  {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-
-  {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-  {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-  {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail:
-      "https://i.pinimg.com/736x/d9/88/05/d9880552f1ae62523abd125fe6f69ff2.jpg",
-  },
-  //   {
-  //     title: "SmartBridge",
-  //     link: "https://smartbridgetech.com",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  //   },
-  //   {
-  //     title: "Renderwork Studio",
-  //     link: "https://renderwork.studio",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  //   },
-
-  //   {
-  //     title: "Creme Digital",
-  //     link: "https://cremedigital.com",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  //   },
-  //   {
-  //     title: "Golden Bells Academy",
-  //     link: "https://goldenbellsacademy.com",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  //   },
-  //   {
-  //     title: "Invoker Labs",
-  //     link: "https://invoker.lol",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  //   },
-  //   {
-  //     title: "E Free Invoice",
-  //     link: "https://efreeinvoice.com",
-  //     thumbnail:
-  //       "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  //   },
-];
