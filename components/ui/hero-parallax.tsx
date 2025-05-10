@@ -7,6 +7,7 @@ import {
   useSpring,
   MotionValue,
 } from "motion/react";
+import Hero from "../LandingComps/Hero";
 
 // Blue and purple color palette
 const colors = {
@@ -20,8 +21,105 @@ const colors = {
   overlay: "#312e81", // Indigo-900
 };
 
+
+const products = [
+  {
+    title: "Moonbeam",
+    link: "https://gomoonbeam.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
+  {
+    title: "Cursor",
+    link: "https://cursor.so",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+  },
+  {
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+
+  {
+    title: "Editorially",
+    link: "https://editorially.org",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+  },
+  {
+    title: "Editrix AI",
+    link: "https://editrix.ai",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+  },
+  {
+    title: "Pixel Perfect",
+    link: "https://app.pixelperfect.quest",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+
+  {
+    title: "Algochurn",
+    link: "https://algochurn.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  {
+    title: "Renderwork Studio",
+    link: "https://renderwork.studio",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+
+  {
+    title: "Creme Digital",
+    link: "https://cremedigital.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
+  },
+  {
+    title: "Golden Bells Academy",
+    link: "https://goldenbellsacademy.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+  },
+  {
+    title: "Invoker Labs",
+    link: "https://invoker.lol",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
+  },
+  {
+    title: "E Free Invoice",
+    link: "https://efreeinvoice.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+  },
+];
+
+
 export const HeroParallax = ({
-  products,
 }: {
   products: {
     title: string;
@@ -114,19 +212,7 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-5xl font-bold text-indigo-900 bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">
-        NURTURE CHILDCARE AND EDUCATION SERVICES. <br />
-        WHERE YOU WILL FIND A NURTURING AND CREATIVE WORLD
-      </h1>
-      <p className="max-w-5xl text-base md:text-xl mt-8 text-purple-900">
-        At NURTURE CHILDCARE AND EDUCATION SERVICES, we know what it takes to
-        enhance our children's education with lots of Love, Play & Vigilant
-        Care. Our unique approach to Caring and top quality Family Day Care
-        Educators makes NURTURE CHILDCARE AND EDUCATION SERVICES more than just
-        a Family Day Care Services - it's a life experience. We invite you to
-        explore our dynamic and diverse community, and stop by for a visit at
-        your convenient Family Day Care Services.
-      </p>
+      <Hero />
     </div>
   );
 };

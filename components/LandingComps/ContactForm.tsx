@@ -85,7 +85,7 @@ export default function ContactSection() {
 
   return (
     <section
-      className="relative w-full py-24 px-24 md:py-32 overflow-hidden"
+      className="relative w-full py-24 px-24 md:py-10 overflow-hidden"
       style={{
         backgroundColor: "var(--color-background)",
         color: "var(--color-text)",

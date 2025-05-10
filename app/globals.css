@@ -3,28 +3,32 @@
 @theme inline {
   --font-display: "Inter", "sans-serif";
 
-  /* 🎨 Primary Color (Blue Shades) */
-  --color-primary-500: #1D4ED8;     /* Updated Primary Blue */
-  --color-primary-dark: #1E3A8A;    /* Updated Dark Blue */
-  --color-primary-light: #EFF6FF;   /* Updated Light Blue */
+  /* 🎨 Primary Color (Sky Blue) */
+  --color-primary-500: #39A4D8;     /* Fresh, modern, used for buttons/CTAs */
+  --color-primary-dark: #2C3E94;    /* Royal Blue for headings/highlights */
+  --color-primary-light: #FAFAF8;   /* Off White as light version of primary */
 
-  /* 🌸 Accent Color (Light Touch of Purple) */
-  --color-accent-soft: #DDD6FE;     /* Updated Soft Purple */
-  --color-accent-tint: #F5F3FF;     /* Updated Lavender Tint */
-  --color-accent-hover: #A78BFA;    /* Updated Purple Hover */
-  --color-accent-glow: #7C3AED;     /* New: Deep Purple for glow effects */
+  /* 🌸 Accent Color (Royal Blue) */
+  --color-accent-soft: #E0E0E0;     /* Light Gray for borders/dividers */
+  --color-accent-tint: #FAFAF8;     /* Off White (same as background) */
+  --color-accent-hover: #2C3E94;    /* Royal Blue hover */
+  --color-accent-glow: #2C3E94;     /* Royal Blue used for glow */
 
   /* ⚪ Neutral / Base Colors */
-  --color-white: #FFFFFF;           /* No change */
-  --color-off-white: #F8FAFC;       /* Updated Off-White */
-  --color-text-muted: #64748B;      /* Updated Text Gray */
-  --color-text-strong: #0F172A;     /* Updated Deep Gray */
+  --color-white: #FFFFFF;           /* Pure white */
+  --color-off-white: #FAFAF8;       /* Background color */
+  --color-text-muted: #666666;      /* Medium gray for subtext */
+  --color-text-strong: #333333;     /* Dark gray for primary body text */
 
-  /* 🌈 Gradient Colors */
-  --gradient-blue-start: #2563EB;   /* New: Blue gradient start */
-  --gradient-blue-end: #4F46E5;     /* New: Blue gradient end */
-  --gradient-purple-start: #7C3AED; /* New: Purple gradient start */
-  --gradient-purple-end: #8B5CF6;   /* New: Purple gradient end */
+  /* ✅ Status Colors */
+  --color-success: #4CAF50;         /* Soft green for success */
+  --color-danger: #F44336;          /* Soft red for errors */
+
+  /* 🌈 Gradient Colors (Primary + Accent) */
+  --gradient-blue-start: #39A4D8;   /* Sky Blue */
+  --gradient-blue-end: #2C3E94;     /* Royal Blue */
+  --gradient-purple-start: #39A4D8; /* Reuse for consistency */
+  --gradient-purple-end: #2C3E94;
 
   --spacing: 0.25rem;
 
@@ -39,45 +43,62 @@
     color: var(--color-text);
     font-family: var(--font-display);
   }
+
   body {
     background-color: inherit;
     color: inherit;
     margin: 0;
     padding: 0;
   }
-  
+
   /* Animated Background Elements */
   .bg-gradient-radial {
-    background: radial-gradient(circle at center, var(--gradient-blue-start) 0%, var(--gradient-purple-end) 100%);
+    background: radial-gradient(
+      circle at center,
+      var(--gradient-blue-start) 0%,
+      var(--gradient-purple-end) 100%
+    );
   }
-  
+
   .bg-gradient-animation {
-    background: linear-gradient(-45deg, 
-      var(--gradient-blue-start), 
-      var(--gradient-blue-end), 
-      var(--gradient-purple-start), 
-      var(--gradient-purple-end));
+    background: linear-gradient(
+      -45deg,
+      var(--gradient-blue-start),
+      var(--gradient-blue-end),
+      var(--gradient-purple-start),
+      var(--gradient-purple-end)
+    );
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
-  
+
   @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
-  
+
   /* Text Gradient Effect */
   .text-gradient {
-    background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-glow));
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-500),
+      var(--color-accent-glow)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     display: inline-block;
   }
-  
+
   /* Glow Shadow Effects */
   .shadow-glow {
-    box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+    box-shadow: 0 0 15px rgba(44, 62, 148, 0.5); /* Royal Blue glow */
   }
 }

@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Globe, Menu, X, User } from "lucide-react";
+import {  Menu, X, User } from "lucide-react";
 
 const navLinks = [
   { name: "HOME", href: "/" },
@@ -15,23 +15,34 @@ const navLinks = [
 
 export default function Navbar() {
   const [active, setActive] = useState("HOME");
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10); // adjust threshold as needed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <>
-
       {/* Main navbar */}
       <nav
-        className="w-full px-6 py-4 fixed top-0 z-50 flex justify-between items-center backdrop-blur-xl rounded-b-xl"
+        className={`w-full px-6 py-2 fixed top-0 z-50 flex justify-between items-center backdrop-blur-xl rounded-b-xl ${isScrolled ? "backdrop-blur-md" : ""}`} 
         style={{
-          backgroundColor: "rgba(15, 23, 42, 0.3)",
-          boxShadow: "0 4px 30px rgba(124, 58, 237, 0.1)",
-          borderBottom: "1px solid rgba(124, 58, 237, 0.1)",
+          backgroundColor: isScrolled ? "rgba(15, 23, 42, 0.3)" : "transparent",
+          border: isScrolled
+            ? "1px solid rgba(124, 58, 237, 0.15)"
+            : "1px solid transparent",
         }}
       >
         {/* Logo */}
         <div className="flex items-center space-x-3">
-          <div
+          {/* <div
             className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg"
             style={{
               background:
@@ -48,14 +59,16 @@ export default function Navbar() {
             >
               Network & Education
             </div>
-          </div>
+          </div> */}
+
+          <img src="/Logo.png" alt="Logo" className=" rounded-lg" />
         </div>
 
         {/* Desktop Nav Links */}
         <div
           className="hidden md:flex items-center space-x-2 px-4 py-2 backdrop-blur-md rounded-full"
           style={{
-            backgroundColor: "rgba(15, 23, 42, 0.4)",
+            backgroundColor: "rgba(15, 23, 42, 0.7)",
             border: "1px solid rgba(124, 58, 237, 0.15)",
           }}
         >

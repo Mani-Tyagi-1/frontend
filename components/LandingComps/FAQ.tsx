@@ -185,7 +185,7 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative w-full py-20 md:py-28 overflow-hidden"
+      className="relative w-full py-20 md:py-10 overflow-hidden"
       style={{
         backgroundColor: "var(--color-off-white)",
         color: "var(--color-text)",

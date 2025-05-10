@@ -59,7 +59,7 @@ export default function AboutSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="relative py-20 md:py-28 px-40 overflow-hidden"
+      className="relative py-20 md:py-14 px-40 overflow-hidden"
       id="about"
     >
       {/* Decorative Background Elements */}
