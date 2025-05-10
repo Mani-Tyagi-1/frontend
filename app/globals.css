@@ -2,15 +2,37 @@
 
 @theme inline {
   --font-display: "Inter", "sans-serif";
-  --color-primary-500: oklch(0.84 0.18 117.33);
+
+  /* 🎨 Primary Color (Blue Shades) */
+  --color-primary-500: #1D4ED8;     /* Updated Primary Blue */
+  --color-primary-dark: #1E3A8A;    /* Updated Dark Blue */
+  --color-primary-light: #EFF6FF;   /* Updated Light Blue */
+
+  /* 🌸 Accent Color (Light Touch of Purple) */
+  --color-accent-soft: #DDD6FE;     /* Updated Soft Purple */
+  --color-accent-tint: #F5F3FF;     /* Updated Lavender Tint */
+  --color-accent-hover: #A78BFA;    /* Updated Purple Hover */
+  --color-accent-glow: #7C3AED;     /* New: Deep Purple for glow effects */
+
+  /* ⚪ Neutral / Base Colors */
+  --color-white: #FFFFFF;           /* No change */
+  --color-off-white: #F8FAFC;       /* Updated Off-White */
+  --color-text-muted: #64748B;      /* Updated Text Gray */
+  --color-text-strong: #0F172A;     /* Updated Deep Gray */
+
+  /* 🌈 Gradient Colors */
+  --gradient-blue-start: #2563EB;   /* New: Blue gradient start */
+  --gradient-blue-end: #4F46E5;     /* New: Blue gradient end */
+  --gradient-purple-start: #7C3AED; /* New: Purple gradient start */
+  --gradient-purple-end: #8B5CF6;   /* New: Purple gradient end */
+
   --spacing: 0.25rem;
 
-  /* Dark background */
-  --color-background: #f8fafc; /* Tailwind's slate-900 */
-  --color-text: #0f172a;       /* Tailwind's slate-50 */
+  /* Global Background and Text Color */
+  --color-background: var(--color-off-white);
+  --color-text: var(--color-text-strong);
 }
 
-/* Apply background and text color globally */
 @layer base {
   html {
     background-color: var(--color-background);
@@ -22,5 +44,40 @@
     color: inherit;
     margin: 0;
     padding: 0;
+  }
+  
+  /* Animated Background Elements */
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--gradient-blue-start) 0%, var(--gradient-purple-end) 100%);
+  }
+  
+  .bg-gradient-animation {
+    background: linear-gradient(-45deg, 
+      var(--gradient-blue-start), 
+      var(--gradient-blue-end), 
+      var(--gradient-purple-start), 
+      var(--gradient-purple-end));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Text Gradient Effect */
+  .text-gradient {
+    background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  
+  /* Glow Shadow Effects */
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
   }
 }

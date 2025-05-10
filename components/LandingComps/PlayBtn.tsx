@@ -11,17 +11,33 @@ const GlassPlayButton = () => {
       whileTap={{ scale: 0.95 }}
     >
       {/* Outer glass circle */}
-      <div className="absolute w-32 h-32 rounded-full backdrop-blur-md bg-white/10 shadow-lg border border-white/20" />
+      <div
+        className="absolute w-32 h-32 rounded-full backdrop-blur-md shadow-lg border"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          borderColor: "rgba(255, 255, 255, 0.2)",
+        }}
+      />
 
-      {/* Inner grey circle */}
-      <div className="absolute w-24 h-24 rounded-full bg-gray-700/80 shadow-inner border border-gray-600/50" />
+      {/* Inner neutral circle */}
+      <div
+        className="absolute w-24 h-24 rounded-full shadow-inner border"
+        style={{
+          backgroundColor: "rgba(17, 24, 39, 0.8)", // tailwind slate-900 / --color-text-strong equivalent
+          borderColor: "rgba(51, 65, 85, 0.5)", // tailwind slate-700
+        }}
+      />
 
-      {/* Orange play button */}
+      {/* Primary theme play button */}
       <motion.button
-        className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+        className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom right, var(--color-primary-500), var(--color-primary-dark))",
+        }}
         initial={{ boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.3)" }}
         whileHover={{
-          boxShadow: "0 10px 25px -3px rgba(245, 131, 39, 0.4)",
+          boxShadow: "0 10px 25px -3px rgba(37, 99, 235, 0.4)", // var(--color-primary-500)
         }}
       >
         <FaPlay className="text-white text-xl ml-1" />

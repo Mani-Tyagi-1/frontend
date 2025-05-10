@@ -3,7 +3,7 @@ import Hero from "../components/LandingComps/Hero";
 import Navbar from "../components/LandingComps/Navbar";
 import VideoSection from "../components/LandingComps/VideoSection";
 import ContactForm from "@/components/LandingComps/ContactForm";
-import Testimonials from "@/components/LandingComps/Testimonials";
+import Testimonials from "@/components/LandingComps/FAQ";
 import About from "@/components/LandingComps/About";
 import MissionPhilosophy from "@/components/LandingComps/MissionPhilosophy";
 
