@@ -153,7 +153,7 @@ const InteractiveCube: React.FC<InteractiveCubeProps> = ({
         {faceImages.map((imgSrc, index) => (
           <div
             key={index}
-            className="absolute bg-cover bg-center border border-black/30"
+            className="absolute bg-cover bg-center "
             style={{
               width: `${size}px`,
               height: `${size}px`,

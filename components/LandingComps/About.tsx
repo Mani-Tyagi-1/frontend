@@ -153,13 +153,13 @@ export default function AboutSection() {
           </p>
         </motion.div>
 
-        <div className="flex gap-12 items-center">
+        <div className="flex gap-25 items-center">
           {/* Image */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className=" w-full h-full p-26  relative rounded-2xl overflow-hidden shadow-xl shadow-indigo-100"
-          >
-            {/* <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/30 mix-blend-overlay z-10"></div>
+          > */}
+          {/* <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/30 mix-blend-overlay z-10"></div>
             <img
               src="https://i.pinimg.com/736x/da/0c/83/da0c83747f596db117ee11efebaf20c6.jpg"
               alt="Children learning and playing"
@@ -167,25 +167,25 @@ export default function AboutSection() {
             />
             <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-20 blur-2xl"></div> */}
 
-            <InteractiveCube
-              images={[
-                "https://t4.ftcdn.net/jpg/09/88/89/65/360_F_988896501_rhj2ZLN91umcoW4HXbXIbCVzg2pnWH06.jpg",
+          <InteractiveCube
+            images={[
+              "https://www.eurokidsindia.com/blog/wp-content/uploads/2023/10/child-should-engage-in-football.jpg",
 
-                "https://static.vecteezy.com/system/resources/thumbnails/048/582/646/small/cool-bengal-wildlife-siberian-tiger-free-photo.jpg",
+              "https://media.istockphoto.com/id/533745979/photo/playful-group-of-kids-in-the-park.jpg?s=170667a&w=0&k=20&c=k-08tpzCC30hQMT3L57bhy5tpjGFiOaUL4l2gwTtTvo=",
 
-                "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+              "https://media.istockphoto.com/id/469224258/photo/low-angle-view-of-happy-children-running-in-nature.jpg?s=170667a&w=0&k=20&c=2HMf1fREZpIZGFfkjcb1VAoYjv0gw25atHEW3Xe5z2s=",
 
-                "https://t3.ftcdn.net/jpg/05/76/45/96/360_F_576459615_uSz3aBcjbTNyDCI1IZjZmENKLx9bx7OX.jpg",
+              "https://thumbs.dreamstime.com/b/children-playing-together-building-blocks-educational-toys-preschool-kindergarten-kids-little-girls-build-toys-h-90711453.jpg",
 
-                "https://static.vecteezy.com/system/resources/thumbnails/054/628/719/small/a-tiger-running-on-rocks-in-the-wild-photo.jpg",
+              "https://thumbs.dreamstime.com/b/little-preschooler-kid-boy-playing-toy-cubes-memorizing-letters-early-education-preschool-concept-child-83348953.jpg",
 
-                "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
-              ]}
-              size={250}
-              initialRotation={{ x: 10, y: -10 }}
-              dragSensitivity={0.3}
-            />
-          </motion.div>
+              "https://images.pexels.com/photos/1104014/pexels-photo-1104014.jpeg?cs=srgb&dl=pexels-hotaru-1104014.jpg&fm=jpg",
+            ]}
+            size={350}
+            initialRotation={{ x: 10, y: -10 }}
+            dragSensitivity={0.3}
+          />
+          {/* </motion.div> */}
 
           {/* Text */}
           <motion.div variants={itemVariants} className="space-y-6">
