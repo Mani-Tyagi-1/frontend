@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {  Menu, X, User } from "lucide-react";
 
 const navLinks = [
@@ -14,9 +15,12 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("HOME");
+  // const [active, setActive] = useState("HOME");
+  //automatic detect current path
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState("HOME");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,15 +76,18 @@ export default function Navbar() {
             border: "1px solid rgba(124, 58, 237, 0.15)",
           }}
         >
-          {navLinks.map((link) => (
+          {navLinks.map((link) => {
+          const isActive = pathname === link.href;
+
+          return (
             <Link
               key={link.name}
               href={link.href}
-              onClick={() => setActive(link.name)}
+              
               className="relative text-xs font-medium transition duration-300 ease-in-out px-3 py-2 rounded-full"
               style={{
                 color:
-                  active === link.name
+                  isActive
                     ? "var(--color-white)"
                     : "var(--color-accent-soft)",
                 backgroundColor:
@@ -92,7 +99,7 @@ export default function Navbar() {
                     ? "0 4px 12px rgba(124, 58, 237, 0.25)"
                     : "none",
                 background:
-                  active === link.name
+                  isActive 
                     ? "linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-blue-end))"
                     : "transparent",
               }}
@@ -112,7 +119,8 @@ export default function Navbar() {
             >
               {link.name}
             </Link>
-          ))}
+            );
+})}
         </div>
 
         {/* Mobile menu button */}

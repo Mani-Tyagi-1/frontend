@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/LandingComps/Testimoniaals";
 import NewsletterSection from "@/components/LandingComps/NewsLetter";
 
 export default function Home() {
+  
   return (
     <>
       <Navbar />
