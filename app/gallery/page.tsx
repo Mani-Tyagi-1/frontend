@@ -287,7 +287,7 @@ const ImageGrid = ({
   images: string[];
   onImageClick?: (src: string) => void;
 }) => (
-  <div className="grid grid-cols-3 gap-4 mb-16">
+  <div className="grid grid-cols-4 gap-4 mb-16">
     {images.map((src, index) => (
       <img
         key={index}
@@ -310,15 +310,15 @@ export default function TimelineDemo() {
   const data = [
     {
       title: "Marathon 2025",
-      content: <ImageGrid images={Array(12).fill(commonImages[0])} />,
+      content: <ImageGrid images={Array(16).fill(commonImages[0])} />,
     },
     {
       title: "Picnic 2024",
-      content: <ImageGrid images={Array(12).fill(commonImages[1])} />,
+      content: <ImageGrid images={Array(16).fill(commonImages[1])} />,
     },
     {
       title: "Contest 2023",
-      content: <ImageGrid images={Array(12).fill(commonImages[2])} />,
+      content: <ImageGrid images={Array(16).fill(commonImages[2])} />,
     },
   ];
 
@@ -341,7 +341,7 @@ export default function TimelineDemo() {
           />
         </svg>
 
-        <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="container mx-auto max-w-9xl relative z-10">
           <div className="text-center">
             <h2
               className="text-4xl md:text-5xl font-bold mb-4"
