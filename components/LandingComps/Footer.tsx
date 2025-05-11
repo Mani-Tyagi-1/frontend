@@ -240,7 +240,7 @@ export default function Footer() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      className=" pt-10 pb-6 overflow-hidden" // <-- Added overflow-hidden here
+      className=" pt-10 pb-6 overflow-hidden z-10" // <-- Added overflow-hidden here
       style={{
         backgroundColor: "var(--color-accent-tint)",
         color: "var(--color-text)",

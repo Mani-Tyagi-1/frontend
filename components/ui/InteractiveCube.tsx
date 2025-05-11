@@ -1,172 +1,219 @@
 "use client";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  MutableRefObject,
+} from "react";
+import { motion } from "framer-motion";
 
 interface InteractiveCubeProps {
-  images: string[]; // Array of 6 image URLs
-  size?: number; // Size of the cube in pixels
-  initialRotation?: { x: number; y: number }; // Initial tilt
-  dragSensitivity?: number; // How much the cube rotates per pixel dragged
+  images: string[];
+  size?: number;
+  /** starting tilt */
+  initialRotation?: { x: number; y: number };
+  /** deg of rotation per pixel dragged */
+  dragSensitivity?: number;
+  /** default idle spin (deg / s around Y) */
+  idleYawDegPerSec?: number;
+  /** momentum friction 0‑1 (lower = slows quicker) */
+  inertiaFriction?: number;
 }
 
 const InteractiveCube: React.FC<InteractiveCubeProps> = ({
   images,
   size = 200,
-  initialRotation = { x: -25, y: 35 },
+  initialRotation = { x: -30, y: 30 },
   dragSensitivity = 0.25,
+  idleYawDegPerSec = 15,
+  inertiaFriction = 0.94,
 }) => {
+  /* ---------------- state ---------------- */
   const [rotation, setRotation] = useState(initialRotation);
   const [isDragging, setIsDragging] = useState(false);
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
+
+  /* ---------------- refs ----------------- */
   const cubeRef = useRef<HTMLDivElement>(null);
+  const frame = useRef<number | null>(null) as MutableRefObject<number | null>;
 
-  const halfSize = size / 2;
+  /** degrees / frame velocities (mutable) */
+  const vel = useRef({ x: 0, y: idleYawDegPerSec / 60 });
 
-  // Default images if not enough are provided
-  const defaultFaceImage =
-    "https://via.placeholder.com/200/CCCCCC/000000?Text=Face";
+  const half = size / 2;
+
+  /* ------------ face images -------------- */
+  const defaultFace = "https://via.placeholder.com/200/CCCCCC/000000?Text=Face";
   const faceImages = Array(6)
     .fill(null)
-    .map((_, i) => images?.[i] || `${defaultFaceImage}${i + 1}`);
+    .map((_, i) => images?.[i] || `${defaultFace}${i + 1}`);
 
-  const faceStyles = [
-    { transform: `rotateY(0deg) translateZ(${halfSize}px)` }, // front
-    { transform: `rotateY(180deg) translateZ(${halfSize}px)` }, // back
-    { transform: `rotateY(90deg) translateZ(${halfSize}px)` }, // right
-    { transform: `rotateY(-90deg) translateZ(${halfSize}px)` }, // left
-    { transform: `rotateX(90deg) translateZ(${halfSize}px)` }, // top
-    { transform: `rotateX(-90deg) translateZ(${halfSize}px)` }, // bottom
+  const faceTransforms = [
+    `rotateY(  0deg) translateZ(${half}px)`,
+    `rotateY(180deg) translateZ(${half}px)`,
+    `rotateY( 90deg) translateZ(${half}px)`,
+    `rotateY(-90deg) translateZ(${half}px)`,
+    `rotateX( 90deg) translateZ(${half}px)`,
+    `rotateX(-90deg) translateZ(${half}px)`,
   ];
 
-  const handleMouseDown = useCallback((clientX: any, clientY: any) => {
+  /* ------------- drag helpers ------------ */
+  const startDrag = useCallback((x: number, y: number) => {
     setIsDragging(true);
-    setLastMousePos({ x: clientX, y: clientY });
-    // Optional: Add class to body to prevent text selection during drag
+    setLastMousePos({ x, y });
     document.body.style.userSelect = "none";
   }, []);
 
-  const handleMouseMove = useCallback(
-    (clientX: number, clientY: number) => {
+  const drag = useCallback(
+    (x: number, y: number) => {
       if (!isDragging) return;
+      const dx = x - lastMousePos.x;
+      const dy = y - lastMousePos.y;
 
-      const deltaX = clientX - lastMousePos.x;
-      const deltaY = clientY - lastMousePos.y;
-
+      // update rotation immediately
       setRotation((prev) => ({
-        x: prev.x - deltaY * dragSensitivity, // Mouse Y movement rotates around X-axis
-        y: prev.y + deltaX * dragSensitivity, // Mouse X movement rotates around Y-axis
+        x: prev.x - dy * dragSensitivity,
+        y: prev.y + dx * dragSensitivity,
       }));
-      setLastMousePos({ x: clientX, y: clientY });
+
+      // store velocity for inertia (deg per frame)
+      vel.current = {
+        x: -dy * dragSensitivity,
+        y: dx * dragSensitivity,
+      };
+
+      setLastMousePos({ x, y });
     },
     [isDragging, lastMousePos, dragSensitivity]
   );
 
-  const handleMouseUp = useCallback(() => {
+  const endDrag = useCallback(() => {
     if (isDragging) {
       setIsDragging(false);
-      document.body.style.userSelect = ""; // Re-enable text selection
+      document.body.style.userSelect = "";
+      // if user barely moved, fall back to idle spin
+      if (Math.abs(vel.current.x) + Math.abs(vel.current.y) < 0.2) {
+        vel.current = { x: 0, y: idleYawDegPerSec / 60 };
+      }
     }
-  }, [isDragging]);
+  }, [isDragging, idleYawDegPerSec]);
 
-  // Mouse event listeners on the document for smoother dragging
+  /* ------------- animation loop ---------- */
   useEffect(() => {
-    const onMouseMove = (e: { clientX: number; clientY: number; }) => handleMouseMove(e.clientX, e.clientY);
-    const onMouseUp = () => handleMouseUp();
+    const animate = () => {
+      // inertia only when not dragging
+      if (!isDragging) {
+        setRotation((p) => ({
+          x: p.x + vel.current.x,
+          y: p.y + vel.current.y,
+        }));
 
+        // apply friction
+        vel.current.x *= inertiaFriction;
+        vel.current.y *= inertiaFriction;
+
+        // once slowed almost to a stop -> idle yaw
+        if (
+          Math.abs(vel.current.x) + Math.abs(vel.current.y) <
+          idleYawDegPerSec / 60
+        ) {
+          vel.current = { x: 0, y: idleYawDegPerSec / 60 };
+        }
+      }
+
+      frame.current = requestAnimationFrame(animate);
+    };
+
+    frame.current = requestAnimationFrame(animate);
+    return () => {
+      if (frame.current) cancelAnimationFrame(frame.current);
+    };
+  }, [isDragging, inertiaFriction, idleYawDegPerSec]);
+
+  /* ------------- mouse listeners --------- */
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => drag(e.clientX, e.clientY);
+    const onUp = () => endDrag();
     if (isDragging) {
-      document.addEventListener("mousemove", onMouseMove);
-      document.addEventListener("mouseup", onMouseUp);
-      document.addEventListener("mouseleave", onMouseUp); // Also stop if mouse leaves window
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", onUp);
+      window.addEventListener("mouseleave", onUp);
     }
-
     return () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-      document.removeEventListener("mouseleave", onMouseUp);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      window.removeEventListener("mouseleave", onUp);
     };
-  }, [isDragging, handleMouseMove, handleMouseUp]);
+  }, [isDragging, drag, endDrag]);
 
-  // Touch event handlers
-  const handleTouchStart = useCallback(
-      (e: TouchEvent) => {
-        if (e.touches.length === 1) {
-          handleMouseDown(e.touches[0].clientX, e.touches[0].clientY);
-        }
-      },
-      [handleMouseDown]
-    );
-
-  const handleTouchMove = useCallback(
-      (e: TouchEvent) => {
-        if (e.touches.length === 1) {
-          // Prevent page scroll while dragging cube
-          e.preventDefault();
-          handleMouseMove(e.touches[0].clientX, e.touches[0].clientY);
-        }
-      },
-      [handleMouseMove]
-    );
-
-  const handleTouchEnd = useCallback(() => {
-    handleMouseUp();
-  }, [handleMouseUp]);
+  /* ------------- touch listeners --------- */
+  const onTouchStart = useCallback(
+    (e: TouchEvent) => {
+      if (e.touches.length === 1)
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    },
+    [startDrag]
+  );
+  const onTouchMove = useCallback(
+    (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        e.preventDefault();
+        drag(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    },
+    [drag]
+  );
+  const onTouchEnd = useCallback(() => endDrag(), [endDrag]);
 
   useEffect(() => {
-    const cubeElement = cubeRef.current?.parentElement?.parentElement; // The scene div
-    if (!cubeElement) return;
-
-    // Add touch listeners to the scene element for better control
-    cubeElement.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    cubeElement.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
-    cubeElement.addEventListener("touchend", handleTouchEnd);
-    cubeElement.addEventListener("touchcancel", handleTouchEnd);
-
+    const scene = cubeRef.current?.parentElement;
+    if (!scene) return;
+    scene.addEventListener("touchstart", onTouchStart, { passive: false });
+    scene.addEventListener("touchmove", onTouchMove, { passive: false });
+    scene.addEventListener("touchend", onTouchEnd);
+    scene.addEventListener("touchcancel", onTouchEnd);
     return () => {
-      cubeElement.removeEventListener("touchstart", handleTouchStart);
-      cubeElement.removeEventListener("touchmove", handleTouchMove);
-      cubeElement.removeEventListener("touchend", handleTouchEnd);
-      cubeElement.removeEventListener("touchcancel", handleTouchEnd);
+      scene.removeEventListener("touchstart", onTouchStart);
+      scene.removeEventListener("touchmove", onTouchMove);
+      scene.removeEventListener("touchend", onTouchEnd);
+      scene.removeEventListener("touchcancel", onTouchEnd);
     };
-  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
+  }, [onTouchStart, onTouchMove, onTouchEnd]);
 
+  /* ---------------- render --------------- */
   return (
-    // Scene container: Provides perspective. Added mouse down here to initiate drag.
     <div
-      className="flex items-center justify-center cursor-grab active:cursor-grabbing"
-      style={{ perspective: `${size * 4}px` }} // Perspective should be greater than cube size
-      onMouseDown={(e) => handleMouseDown(e.clientX, e.clientY)}
+      className="cursor-grab active:cursor-grabbing"
+      style={{ perspective: `${size * 5}px` }}
+      onMouseDown={(e) => startDrag(e.clientX, e.clientY)}
     >
-      {/* Cube container: This is what rotates */}
-      <div
+      <motion.div
         ref={cubeRef}
-        className="relative transition-transform duration-75 ease-out" // Smooth stop when mouse is released
+        className="relative"
         style={{
-          width: `${size}px`,
-          height: `${size}px`,
+          width: size,
+          height: size,
           transformStyle: "preserve-3d",
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          transition: isDragging ? "none" : "transform 0.12s linear",
         }}
       >
-        {faceImages.map((imgSrc, index) => (
+        {faceImages.map((src, i) => (
           <div
-            key={index}
-            className="absolute bg-cover bg-center "
+            key={i}
+            className="absolute bg-cover bg-center"
             style={{
-              width: `${size}px`,
-              height: `${size}px`,
-              backgroundImage: `url(${imgSrc})`,
-              ...faceStyles[index],
-              backfaceVisibility: "hidden", // Optional: hides the back of the faces
+              width: size,
+              height: size,
+              backgroundImage: `url(${src})`,
+              transform: faceTransforms[i],
+              backfaceVisibility: "hidden",
             }}
-          >
-            {/* You could add text or other elements inside faces if needed */}
-            {/* <span className="absolute p-2 text-xs text-white bg-black/50 bottom-1 left-1">{`Face ${index + 1}`}</span> */}
-          </div>
+          />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
