@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { JSX, SVGProps } from "react";
+import InteractiveCube from "../ui/InteractiveCube";
 
 // Icon for list items
 const CheckCircleIcon = (
@@ -129,7 +130,9 @@ export default function AboutSection() {
             Who We Are
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl md:text-5xl relative">
-            <span className="text-gradient py-2 mb-4">Nurturing Potential,</span>
+            <span className="text-gradient py-2 mb-4">
+              Nurturing Potential,
+            </span>
             <br />
             <span className="relative">
               Inspiring Futures
@@ -154,15 +157,34 @@ export default function AboutSection() {
           {/* Image */}
           <motion.div
             variants={itemVariants}
-            className=" w-[70rem]  relative rounded-2xl overflow-hidden shadow-xl shadow-indigo-100"
+            className=" w-full h-full p-26  relative rounded-2xl overflow-hidden shadow-xl shadow-indigo-100"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/30 mix-blend-overlay z-10"></div>
+            {/* <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/30 to-blue-500/30 mix-blend-overlay z-10"></div>
             <img
               src="https://i.pinimg.com/736x/da/0c/83/da0c83747f596db117ee11efebaf20c6.jpg"
               alt="Children learning and playing"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
             />
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-20 blur-2xl"></div>
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-20 blur-2xl"></div> */}
+
+            <InteractiveCube
+              images={[
+                "https://t4.ftcdn.net/jpg/09/88/89/65/360_F_988896501_rhj2ZLN91umcoW4HXbXIbCVzg2pnWH06.jpg",
+
+                "https://static.vecteezy.com/system/resources/thumbnails/048/582/646/small/cool-bengal-wildlife-siberian-tiger-free-photo.jpg",
+
+                "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+
+                "https://t3.ftcdn.net/jpg/05/76/45/96/360_F_576459615_uSz3aBcjbTNyDCI1IZjZmENKLx9bx7OX.jpg",
+
+                "https://static.vecteezy.com/system/resources/thumbnails/054/628/719/small/a-tiger-running-on-rocks-in-the-wild-photo.jpg",
+
+                "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+              ]}
+              size={250}
+              initialRotation={{ x: 10, y: -10 }}
+              dragSensitivity={0.3}
+            />
           </motion.div>
 
           {/* Text */}

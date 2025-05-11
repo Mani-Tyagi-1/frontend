@@ -226,8 +226,8 @@ const GradientBackground = () => {
   );
 };
 
+// FINAL FOOTER COMPONENT
 export default function Footer() {
-  // Current year for copyright
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
@@ -240,7 +240,7 @@ export default function Footer() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      className="relative pt-24 pb-12"
+      className=" pt-10 pb-6 overflow-hidden" // <-- Added overflow-hidden here
       style={{
         backgroundColor: "var(--color-accent-tint)",
         color: "var(--color-text)",
@@ -248,7 +248,7 @@ export default function Footer() {
     >
       <GradientBackground />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Logo & Social Media Row */}
         <motion.div
           variants={itemVariants}
@@ -333,7 +333,7 @@ export default function Footer() {
                 </motion.div>
               ))}
 
-              <motion.div
+              {/* <motion.div
                 variants={itemVariants}
                 className="mt-8 p-5 rounded-xl text-center"
                 style={{
@@ -354,7 +354,7 @@ export default function Footer() {
                 >
                   Let's Talk
                 </Link>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
 
@@ -363,11 +363,9 @@ export default function Footer() {
             variants={itemVariants}
             className="grid sm:grid-cols-3 gap-8"
           >
-            {[
-              { title: "Menu", links: menuLinks },
+            {[{ title: "Menu", links: menuLinks },
               { title: "Services", links: serviceLinksData },
-              { title: "Legal", links: legalLinksData },
-            ].map((section) => (
+              { title: "Legal", links: legalLinksData }].map((section) => (
               <div key={section.title}>
                 <h3
                   className="text-lg font-bold mb-6 relative inline-block"

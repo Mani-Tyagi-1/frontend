@@ -180,7 +180,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-bold leading-tight text-gradient"
+            className="text-5xl md:text-7xl text-start font-bold leading-tight text-gradient"
           >
             <span className="text-gradient pl-22">NURTURE</span>
             <span className="relative inline-block ml-8">
