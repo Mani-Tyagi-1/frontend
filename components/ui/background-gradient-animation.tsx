@@ -39,24 +39,38 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+  // useEffect(() => {
+  //   document.body.style.setProperty(
+  //     "--gradient-background-start",
+  //     gradientBackgroundStart
+  //   );
+  //   document.body.style.setProperty(
+  //     "--gradient-background-end",
+  //     gradientBackgroundEnd
+  //   );
+  //   document.body.style.setProperty("--first-color", firstColor);
+  //   document.body.style.setProperty("--second-color", secondColor);
+  //   document.body.style.setProperty("--third-color", thirdColor);
+  //   document.body.style.setProperty("--fourth-color", fourthColor);
+  //   document.body.style.setProperty("--fifth-color", fifthColor);
+  //   document.body.style.setProperty("--pointer-color", pointerColor);
+  //   document.body.style.setProperty("--size", size);
+  //   document.body.style.setProperty("--blending-value", blendingValue);
+  // }, []);
+
   useEffect(() => {
-    document.body.style.setProperty(
-      "--gradient-background-start",
-      gradientBackgroundStart
-    );
-    document.body.style.setProperty(
-      "--gradient-background-end",
-      gradientBackgroundEnd
-    );
-    document.body.style.setProperty("--first-color", firstColor);
-    document.body.style.setProperty("--second-color", secondColor);
-    document.body.style.setProperty("--third-color", thirdColor);
-    document.body.style.setProperty("--fourth-color", fourthColor);
-    document.body.style.setProperty("--fifth-color", fifthColor);
-    document.body.style.setProperty("--pointer-color", pointerColor);
-    document.body.style.setProperty("--size", size);
-    document.body.style.setProperty("--blending-value", blendingValue);
-  }, []);
+  document.body.style.setProperty("--gradient-background-start", "#39A4D8"); // Sky Blue
+  document.body.style.setProperty("--gradient-background-end", "#2C3E94");   // Royal Blue
+  document.body.style.setProperty("--first-color", "57, 164, 216");          // Sky Blue
+  document.body.style.setProperty("--second-color", "44, 62, 148");          // Royal Blue
+  document.body.style.setProperty("--third-color", "240, 240, 240");         // Soft Light Gray
+  document.body.style.setProperty("--fourth-color", "76, 175, 80");          // Success Green
+  document.body.style.setProperty("--fifth-color", "244, 67, 54");           // Error Red
+  document.body.style.setProperty("--pointer-color", "44, 62, 148");         // Royal Blue
+  document.body.style.setProperty("--size", size);
+  document.body.style.setProperty("--blending-value", blendingValue);
+}, []);
+
 
   useEffect(() => {
     function move() {

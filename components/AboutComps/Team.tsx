@@ -1,8 +1,6 @@
 "use client";
 
 import { AnimatedTestimonials } from "../ui/animated-testimonials";
-import { Badge } from "../ui/badge";
-
 export default function Team() {
   const GradientBlobBackground = () => {
     return (
@@ -83,19 +81,18 @@ export default function Team() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col justify-center items-center">
-          <div className="flex flex-col justify-center items-center m-2 p-2 ">
-            <Badge
-              variant="outline"
-              className="text-md py-1 sm:text-base text-blue-600 font-semibold"
-            >
-              Team Members
-            </Badge>
+          <div className="relative flex flex-col items-center p-1">
+        <h2 className="text-2xl mb-4 uppercase tracking-wider text-black/70 font-bold">
+          Founder's Desk
+        </h2>
+        <div className="text-center">
+          <h1 className="font-bold tracking-wide mb-2 uppercase text-gradient text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            Meet the Visionary
+          </h1>
 
-            <h1 className="text-xl sm:text-3xl md:text-4xl font-semibold tracking-wide mt-5">
-              Know Our <span className="text-gradient">Squad</span>
-              <div className="lg:flex lg:justify-start lg:items-start w-40 h-1 max-lg:w-24 bg-gradient-animation rounded-full mx-auto mt-2"></div>
-            </h1>
-          </div>
+          <div className="lg:flex lg:justify-start lg:items-start w-40 h-1 max-lg:w-24 bg-gradient-animation rounded-full mx-auto m-5 "></div>
+        </div>
+      </div>
             <div className="text-black">
           <AnimatedTestimonials testimonials={testimonials} />
           </div>

@@ -1,67 +1,70 @@
 import React from "react";
-import { Timeline } from "@/components/ui/timeline";
+import { CardStack } from "../ui/card-stack";
 
 export default function WorkTimeline() {
-  const data = [
-    {
-      title: "01",
-      content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-black md:text-sm dark:text-black">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "02",
-      content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-black md:text-sm dark:text-black">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
-          </p>
-          <p className="mb-8 text-xs font-normal text-black md:text-sm dark:text-black">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more examples of beautiful designs I built.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "03",
-      content: (
-        <div>
-          <p className="mb-4 text-xs font-normal text-black md:text-sm dark:text-black">
-            Deployed 5 new components on Aceternity today
-          </p>
-          <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs text-black md:text-sm dark:text-black">
-              ✅ Card grid component
-            </div>
-            <div className="flex items-center gap-2 text-xs text-black md:text-sm dark:text-black">
-              ✅ Startup template Aceternity
-            </div>
-            <div className="flex items-center gap-2 text-xs text-black md:text-sm dark:text-black">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex items-center gap-2 text-xs text-black md:text-sm dark:text-black">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex items-center gap-2 text-xs text-black md:text-sm dark:text-black">
-              ✅ Salman Bhai Fan Club registrations open
-            </div>
-          </div>
-        </div>
-      ),
-    },
-  ];
+
+  const CARDS = [
+  {
+    id: 0,
+   
+    content: (
+      <p>
+        These cards are amazing,I want to use them in my
+        project. Framer motion is a godsend ngl tbh fam 🙏
+      </p>
+    ),
+  },
+  {
+    id: 1,
+    
+    content: (
+      <p>
+        I dont like this Twitter thing,{" "}
+        deleting it right away because yolo. Instead, I
+        would like to call it X.com so that it can easily
+        be confused with adult sites.
+      </p>
+    ),
+  },
+  {
+    id: 2,
+    
+    content: (
+      <p>
+        The first rule of
+        Fight Club is that you do not talk about fight
+        club. The second rule of
+        Fight club is that you DO NOT TALK about fight
+        club.
+      </p>
+    ),
+  },
+];
+ 
 
   return (
     // how we work and pur 4 stages coming from the component
-    <div className="relative w-full overflow-clip bg-white p-6">
-      <Timeline data={data}  />
-    </div>
+    <div className="relative flex flex-col items-center p-1">
+        <h2 className="text-2xl mb-4 uppercase tracking-wider text-black/70 font-bold">
+          inside look
+        </h2>
+        <div className="text-center">
+          <h1 className="font-bold tracking-wide mb-2 uppercase text-gradient text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            our work flow
+          </h1>
+
+          <div className="lg:flex lg:justify-start lg:items-start w-40 h-1 max-lg:w-24 bg-gradient-animation rounded-full mx-auto m-5 "></div>
+
+          
+    
+
+        </div>
+        <div className=" m-10 w-">
+      <CardStack items={CARDS}  />
+      </div>
+
+        
+      </div>
     
   );
 }
