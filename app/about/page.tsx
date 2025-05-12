@@ -13,19 +13,17 @@ import Footer from '@/components/LandingComps/Footer'
 const about = () => {
   return (
     <div className="w-full bg-[var(--color-background)] text-[var(--color-text)]">
-  <section className="h-screen flex items-center justify-center text-center overflow-hidden">
+  
     <Hero />
-  </section>
-
-  <section className="py-20 px-4">
+  <section className="py-4 px-4">
     <AboutUs />
   </section>
     <Brands />
     <Founder />
     <Values />
-    <WorkTimeline />
+    {/* <WorkTimeline /> */}
     <Team />
-    <Gallery />
+    {/* <Gallery /> */}
     <FAQSection />
     <Footer />
 </div>
