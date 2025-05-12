@@ -163,7 +163,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[300vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
+      className="relative w-full h-[200vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
     >
       {/* Background */}
       <div className="absolute inset-0 w-full h-full bg-[var(--color-background)] opacity-20 z-10 " />
