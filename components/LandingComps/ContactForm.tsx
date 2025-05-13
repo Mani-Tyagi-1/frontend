@@ -85,7 +85,7 @@ export default function ContactSection() {
 
   return (
     <section
-      className="relative w-full py-24 px-24 md:py-10 overflow-hidden"
+      className="relative w-full py-5  md:px-24 md:py-10 overflow-hidden "
       style={{
         backgroundColor: "var(--color-background)",
         color: "var(--color-text)",
@@ -93,8 +93,8 @@ export default function ContactSection() {
     >
       <GradientBlobBackground />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="container mx-auto w-full  px-2 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
           {/* Left Side - Text */}
           <div className="relative text-center md:text-left">
             <motion.div
@@ -109,7 +109,7 @@ export default function ContactSection() {
                 <br />
                 <span className="text-gradient">Connect</span>
               </h2>
-              <p className="mt-6 text-lg text-gray-600 max-w-md">
+              <p className="mt-6 text-lg text-gray-600 max-w-xl">
                 Have a question or want to work together? Drop me a message and I'll get back to you soon.
               </p>
               
@@ -131,13 +131,13 @@ export default function ContactSection() {
             </motion.div>
           </div>
 
-          {/* Right Side - Form */}
+          {/* Right Side - Form  desktop view*/}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="p-6 sm:p-8 md:p-10 rounded-2xl shadow-xl"
+            className="w-full  p-6 sm:p-8 md:p-10 rounded-2xl shadow-xl"
             style={{ 
               background: "var(--color-white)",
               boxShadow: "0 10px 40px rgba(124, 58, 237, 0.1)"

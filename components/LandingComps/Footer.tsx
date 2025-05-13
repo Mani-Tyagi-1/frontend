@@ -240,7 +240,7 @@ export default function Footer() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      className=" pt-10 pb-6 overflow-hidden z-10" // <-- Added overflow-hidden here
+      className=" pt-5 pb-3 overflow-hidden z-10" // <-- Added overflow-hidden here
       style={{
         backgroundColor: "var(--color-accent-tint)",
         color: "var(--color-text)",
@@ -361,7 +361,7 @@ export default function Footer() {
           {/* Links Column */}
           <motion.div
             variants={itemVariants}
-            className="grid sm:grid-cols-3 gap-8"
+            className="flex gap-8"
           >
             {[{ title: "Menu", links: menuLinks },
               { title: "Services", links: serviceLinksData },
@@ -374,7 +374,7 @@ export default function Footer() {
                   {section.title}
                   <div className="absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-animation rounded-full"></div>
                 </h3>
-                <ul className="space-y-3">
+                <ul className=" space-y-0 md:space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <Link
@@ -396,7 +396,7 @@ export default function Footer() {
 
         <motion.div
           variants={itemVariants}
-          className="mt-16 pt-8 text-center text-sm"
+          className="mt-6 pt-4 text-center text-sm"
           style={{
             borderTop: "1px solid rgba(124, 58, 237, 0.1)",
             color: "var(--color-text-muted)",

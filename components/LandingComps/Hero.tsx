@@ -162,7 +162,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[200vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
+      className="relative w-full h-[60vh]  md:h-[200vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
     >
       {/* Background */}
       <div className="absolute inset-0 w-full h-full bg-[var(--color-background)] opacity-20 z-10 " />
@@ -175,7 +175,7 @@ export default function Hero() {
           translateY,
           opacity,
         }}
-        className="absolute top-[20%] left-[5%] w-[100%] pt-20 px-4 z-0 [perspective:1000px] [transform-style:preserve-3d]"
+        className=" hidden md:block  absolute top-[60%] md:top-[20%] left-[5%] w-[100%] pt-20 px-4 z-0 [perspective:1000px] [transform-style:preserve-3d]"
       >
         <motion.div
           className="flex flex-row-reverse space-x-reverse space-x-10 mb-10"
@@ -223,12 +223,12 @@ export default function Hero() {
       <div className="relative z-5 flex top-55 flex-col items-center px-5">
         {/* Lamp Layer */}
         <div className="absolute top-1/3 w-full h-[57%] scale-y-125 flex items-center justify-center isolate z-10">
-          {/* <motion.div
-          initial={{ width: "10rem" }}
-          whileInView={{ width: "30rem" }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-auto z-30 h-36 w-[30rem] -translate-y-[6rem] rounded-full bg-[var(--color-primary-500)] blur-2xl"
-        /> */}
+          <motion.div
+            initial={{ width: "10rem" }}
+            whileInView={{ width: "30rem" }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+            className=" block md:hidden absolute inset-auto z-30 h-36 w-[30rem] -translate-y-[6rem] rounded-full bg-[var(--color-primary-500)] opacity-60 blur-2xl"
+          />
           <motion.div
             initial={{ width: "20rem" }}
             whileInView={{ width: "45rem" }}
@@ -238,8 +238,8 @@ export default function Hero() {
           <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-[var(--color-background)]" />
         </div>
 
-        {/* Hero Content */}
-        <div className="absolute top-[40%] left-0 w-full z-50 flex flex-col items-center px-5 text-center">
+        {/* Desktop Hero Content */}
+        <div className="hidden  absolute top-[40%] left-0 w-full z-50 md:flex flex-col items-center px-5 text-center">
           <motion.div
             className="px-4"
             initial={{ opacity: 0 }}
@@ -292,6 +292,60 @@ export default function Hero() {
             </motion.a>
           </motion.div>
         </div>
+
+        {/* Mobile View  */}
+        <div className=" md:hidden absolute -top-26 left-0 w-full z-50 flex flex-col items-center px-4 sm:px-5 text-center">
+          <motion.div
+            className="w-full max-w-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-3xl sm:text-5xl md:text-7xl font-bold leading-snug sm:leading-tight text-center sm:text-start   "
+            >
+              <span className="text-gradient mr-16 ">NURTURE</span>
+              <span className="relative inline-block ml-3 sm:ml-8">
+                <span className="absolute -top-7 -left-18 -rotate-2 px-1.5 sm:px-2 py-0.5 sm:py-1 font-bold z-0 bg-[var(--color-primary-dark)] text-white shadow-glow text-xl sm:text-base">
+                  CHILDCARE
+                </span>
+              </span>
+              <br />
+              <span className="text-gradient">AND EDUCATION SERVICES.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="mt-4 sm:mt-6 text-lg sm:text-2xl text-[var(--color-primary-dark)]"
+            >
+              A Community of Passionate Family Day Care Educators and Learners
+            </motion.p>
+
+            <motion.a
+              href="/template"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "var(--color-accent-hover)",
+              }}
+              transition={{ duration: 0.3 }}
+              className="mt-6 sm:mt-10 inline-block px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-base sm:text-lg shadow-glow"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--color-primary-500), var(--color-accent-hover))",
+                color: "var(--color-white)",
+              }}
+            >
+              Explore ↗
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -313,7 +367,7 @@ function ProductCard({
     <motion.div
       style={{ x: translate }}
       whileHover={{ y: -20 }}
-      className="group/product h-60 w-[16rem]  relative shrink-0 rounded-lg overflow-hidden"
+      className="group/product h-30 w-[8rem] md:h-60 md:w-[16rem]  relative shrink-0 rounded-lg overflow-hidden"
     >
       <a href={product.link} className="block">
         <img
