@@ -1,14 +1,13 @@
 import AboutUs from '@/components/AboutComps/AboutUs'
-import Brands from '@/components/AboutComps/Brands'
 import Hero from '@/components/AboutComps/Hero'
 import Founder from '@/components/AboutComps/Founder'
-import Values from '@/components/AboutComps/Values'
 import Team from '@/components/AboutComps/Team'
 import React from 'react'
 import WorkTimeline from '@/components/AboutComps/WorkTimeline'
-// import Gallery from '@/components/AboutComps/Gallery'
 import FAQSection from '@/components/LandingComps/FAQ'
 import Footer from '@/components/LandingComps/Footer'
+import MissionPhilosophySection from '@/components/LandingComps/MissionPhilosophy'
+import Video_About from '@/components/AboutComps/Video_About'
 
 const about = () => {
   return (
@@ -18,10 +17,10 @@ const about = () => {
   <section className="py-4 px-4">
     <AboutUs />
   </section>
-    <Brands />
+    <Video_About />
+    <MissionPhilosophySection />
     <Founder />
-    <Values />
-    {/* <WorkTimeline /> */}
+    <WorkTimeline />
     <Team />
     {/* <Gallery /> */}
     <FAQSection />

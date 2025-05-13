@@ -58,18 +58,71 @@ const products = [
       "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
   },
   {
-    title: "Innovative Methods",
+    title: "Innovative Methods1",
     link: "#",
     thumbnail:
       "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
   },
-  
+  {
+    title: "Innovative Methods2",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods4",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Method3s",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Metho33ds",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods5",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods6",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods7",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods8",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
+  {
+    title: "Innovative Methods09",
+    link: "#",
+    thumbnail:
+      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+  },
 ];
 
 export default function Hero() {
-  const firstRow = products.slice(0, 4);
-  const secondRow = products.slice(4, 8);
-  const thirdRow = products.slice(8, 10);
+  const firstRow = products.slice(0, 10);
+  const secondRow = products.slice(7, 12);
+  const thirdRow = products.slice(13, 18);
 
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
@@ -79,16 +132,18 @@ export default function Hero() {
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
+  // ✅ Reduced from 1000 to 300
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, 100]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, -100]),
     springConfig
   );
+
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [10, 0]),
     springConfig
   );
   const opacity = useSpring(
@@ -96,19 +151,22 @@ export default function Hero() {
     springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [10, 0]),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-500, 300]),
     springConfig
   );
 
   return (
     <section
       ref={ref}
-      className="relative w-full h-[300vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
+      className="relative w-full h-[200vh] overflow-hidden bg-[var(--color-background)] text-[var(--color-text)]"
     >
+      {/* Background */}
+      <div className="absolute inset-0 w-full h-full bg-[var(--color-background)] opacity-20 z-10 " />
+
       {/* Parallax Background */}
       <motion.div
         style={{
@@ -117,9 +175,13 @@ export default function Hero() {
           translateY,
           opacity,
         }}
-        className="absolute top-120 left-0 w-full/80 pt-40 px-4 z-0 [perspective:1000px] [transform-style:preserve-3d]"
+        className="absolute top-[20%] left-[5%] w-[100%] pt-20 px-4 z-0 [perspective:1000px] [transform-style:preserve-3d]"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div
+          className="flex flex-row-reverse space-x-reverse space-x-10 mb-10"
+          animate={{ x: ["0%", "-20%"] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -128,7 +190,12 @@ export default function Hero() {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20">
+
+        <motion.div
+          className="flex flex-row space-x-10 mb-10"
+          animate={{ x: ["0%", "-20%"] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        >
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -137,7 +204,12 @@ export default function Hero() {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+
+        <motion.div
+          className="flex flex-row-reverse space-x-reverse space-x-10"
+          animate={{ x: ["0%", "-20%"] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        >
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -148,81 +220,78 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <div className="relative z-5 flex top-60 flex-col items-center px-5">
-      {/* Lamp Layer */}
-      <div className="absolute top-1/3 w-full h-[57%] scale-y-125 flex items-center justify-center isolate z-10">
-       
-        
-        <motion.div
+      <div className="relative z-5 flex top-55 flex-col items-center px-5">
+        {/* Lamp Layer */}
+        <div className="absolute top-1/3 w-full h-[57%] scale-y-125 flex items-center justify-center isolate z-10">
+          {/* <motion.div
           initial={{ width: "10rem" }}
           whileInView={{ width: "30rem" }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
           className="absolute inset-auto z-30 h-36 w-[30rem] -translate-y-[6rem] rounded-full bg-[var(--color-primary-500)] blur-2xl"
-        />
-        <motion.div
-          initial={{ width: "20rem" }}
-          whileInView={{ width: "45rem" }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-auto z-50 h-0.5 w-[45rem] -translate-y-[7rem] bg-[var(--color-primary-500)]"
-        />
-        <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-[var(--color-background)]" />
-      </div>
+        /> */}
+          <motion.div
+            initial={{ width: "20rem" }}
+            whileInView={{ width: "45rem" }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-auto z-50 h-[3px] rounded-xl w-[45rem] -translate-y-[7rem] bg-[var(--color-primary-500)]"
+          />
+          <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-[var(--color-background)]" />
+        </div>
 
-      {/* Hero Content */}
-      <div className="absolute top-[40%] left-0 w-full z-50 flex flex-col items-center px-5 text-center">
-        <motion.div
-          className="px-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl text-start font-bold leading-tight text-gradient"
+        {/* Hero Content */}
+        <div className="absolute top-[40%] left-0 w-full z-50 flex flex-col items-center px-5 text-center">
+          <motion.div
+            className="px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
           >
-            <span className="text-gradient pl-22">NURTURE</span>
-            <span className="relative inline-block ml-8">
-              <span className="absolute -top-2 -left-2 rotate-2 px-2 py-1 font-bold z-0 bg-[var(--gradient-blue-start)] text-white shadow-glow">
-                CHILDCARE
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-5xl md:text-7xl text-start font-bold leading-tight "
+            >
+              <span className="text-gradient pl-22">NURTURE</span>
+              <span className="relative inline-block ml-8">
+                <span className="absolute -top-2 -left-2 rotate-2 px-2 py-1 font-bold z-0 bg-[var(--gradient-blue-start)] text-white shadow-glow ">
+                  CHILDCARE
+                </span>
+                <span className="invisible">Digital</span>
               </span>
-              <span className="invisible">Digital</span>
-            </span>
-            <br />
-            <span className="text-gradient"> AND EDUCATION SERVICES.</span>
-          </motion.h1>
+              <br />
+              <span className="text-gradient"> AND EDUCATION SERVICES.</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="mt-6 text-3xl mx-auto text-[var(--color-primary-dark)]"
-          >
-            A Community of Passionate Family Day Care Educators and Learners
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="mt-6 text-3xl mx-auto text-[var(--color-primary-dark)]"
+            >
+              A Community of Passionate Family Day Care Educators and Learners
+            </motion.p>
 
-          <motion.a
-            href="/template"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "var(--color-accent-hover)",
-            }}
-            transition={{ duration: 0.3 }}
-            className="mt-10 inline-block px-8 py-3 rounded-full font-semibold text-lg shadow-glow"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--color-primary-500), var(--color-accent-hover))",
-              color: "var(--color-white)",
-            }}
-          >
-            Explore ↗
-          </motion.a>
-        </motion.div>
-      </div>
-
+            <motion.a
+              href="/template"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: "var(--color-accent-hover)",
+              }}
+              transition={{ duration: 0.3 }}
+              className="mt-10 inline-block px-8 py-3 rounded-full font-semibold text-lg shadow-glow"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--color-primary-500), var(--color-accent-hover))",
+                color: "var(--color-white)",
+              }}
+            >
+              Explore ↗
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -244,7 +313,7 @@ function ProductCard({
     <motion.div
       style={{ x: translate }}
       whileHover={{ y: -20 }}
-      className="group/product h-96 w-[30rem] relative shrink-0 rounded-lg overflow-hidden"
+      className="group/product h-60 w-[16rem]  relative shrink-0 rounded-lg overflow-hidden"
     >
       <a href={product.link} className="block">
         <img
