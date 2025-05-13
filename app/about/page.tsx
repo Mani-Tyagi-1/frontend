@@ -21,8 +21,10 @@ const about = () => {
     <Brands />
     <Founder />
     <Values />
-    {/* <WorkTimeline /> */}
-    <Team />
+      {/* <WorkTimeline /> */}
+      <section className="hidden md:block">
+        <Team />
+      </section>
     {/* <Gallery /> */}
     <FAQSection />
     <Footer />

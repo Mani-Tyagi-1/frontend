@@ -83,7 +83,7 @@ const NurtureChildcareHero = () => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-950 mt-20 ">
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-950 mt-20">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-24 h-24 rounded-full bg-blue-200 opacity-40 animate-pulse"></div>
@@ -101,7 +101,7 @@ const NurtureChildcareHero = () => {
         </div>
       </div>
 
-      <div className="container relative z-10 px-6  mx-auto lg:py-24 ">
+      <div className="container relative z-10 px-6 mx-auto lg:py-24 ">
         <div className="flex flex-col-reverse items-center lg:flex-row lg:justify-between">
           {/* Text Content */}
           <div
@@ -122,7 +122,7 @@ const NurtureChildcareHero = () => {
               <button className="px-6 py-3 font-medium text-white transition-all bg-blue-600 rounded-full hover:bg-blue-700 hover:shadow-lg">
                 Our Programs
               </button>
-              <button className="px-6 py-3 font-medium text-blue-600 transition-all bg-white border border-blue-600 rounded-full hover:bg-blue-50 hover:shadow-md">
+              <button className=" hidden md:block px-6 py-3 font-medium text-blue-600 transition-all bg-white border border-blue-600 rounded-full hover:bg-blue-50 hover:shadow-md">
                 Contact Us
               </button>
             </div>
@@ -136,7 +136,7 @@ const NurtureChildcareHero = () => {
                 : "opacity-0 translate-x-10"
             } transition-all duration-1000 ease-out`}
           >
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
+            <div className="relative overflow-hidden rounded-2xl shadow-xl mt-4 md:mt-0">
               {/* Placeholder image */}
               <img
                 src="https://static.wixstatic.com/media/550bcd0f5902421ebef95c3bb5441a70.jpg/v1/fill/w_940,h_520,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Kids%20Blowing%20Bubbles.jpg"

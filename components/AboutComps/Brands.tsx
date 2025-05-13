@@ -83,7 +83,7 @@ export default function Brands() {
   ];
 
   return (
-    <div className="w-full h-[50vh] relative rounded-lg overflow-hidden">
+    <div className="hidden md:block w-full h-[50vh] relative rounded-lg overflow-hidden">
       <BackgroundGradientAnimation>
         <motion.div
           initial={{ opacity: 0 }}

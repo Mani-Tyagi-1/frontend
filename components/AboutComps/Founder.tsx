@@ -111,7 +111,7 @@ export default function Founder() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left - Image Section */}
         <motion.div variants={itemVariants} className="relative">
-          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative w-full/2 md:w-full h-[250px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="James Andrews"
@@ -135,7 +135,7 @@ export default function Founder() {
             Meet The Founder
           </h2>
           <div className="w-20 h-1 bg-[#a78bfa] rounded-full" />
-          <p className="text-[#bfdbfe] text-lg leading-relaxed">
+          <p className="text-[#bfdbfe] text-lg leading-5 md:leading-relaxed">
             James Andrews, the driving force behind Nurture Care, brings over a
             decade of experience in digital marketing. His passion for
             innovation and commitment to client success have been the

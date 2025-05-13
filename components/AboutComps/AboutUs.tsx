@@ -23,7 +23,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className=" h-[90vh]  bg-gradient-to-b from-white to-blue-50  overflow-hidden">
+    <section className=" h-[50vh] md:h-[90vh] mt-4  bg-gradient-to-b from-white to-blue-50  overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         <div className= "  flex flex-col lg:flex-row gap-12 ">
           {/* Left Column: Images & Experience Badge */}
