@@ -8,14 +8,14 @@ export default function Team() {
     return (
       <>
         {/* Gradient Blobs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+        <div className=" hidden md:block absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-animation opacity-30 blur-3xl transform translate-x-1/4 -translate-y-1/4" />
           <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-animation opacity-30 blur-3xl transform -translate-x-1/4" />
           <div className="absolute top-1/2 left-1/2 w-80 h-80 rounded-full bg-gradient-radial opacity-20 blur-2xl transform -translate-x-1/2 -translate-y-1/2" />
         </div>
 
         {/* Animated Dots Grid */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className=" hidden md:block absolute inset-0 opacity-20 pointer-events-none">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern

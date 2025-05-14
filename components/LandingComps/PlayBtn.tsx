@@ -12,7 +12,7 @@ const GlassPlayButton = () => {
     >
       {/* Outer glass circle */}
       <div
-        className="absolute w-32 h-32 rounded-full backdrop-blur-md shadow-lg border"
+        className="absolute w-16 h-16 md:w-32 md:h-32 rounded-full backdrop-blur-md shadow-lg border"
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.1)",
           borderColor: "rgba(255, 255, 255, 0.2)",
@@ -21,7 +21,7 @@ const GlassPlayButton = () => {
 
       {/* Inner neutral circle */}
       <div
-        className="absolute w-24 h-24 rounded-full shadow-inner border"
+        className="absolute hidden md:block w-24 h-24 rounded-full shadow-inner border"
         style={{
           backgroundColor: "rgba(17, 24, 39, 0.8)", // tailwind slate-900 / --color-text-strong equivalent
           borderColor: "rgba(51, 65, 85, 0.5)", // tailwind slate-700

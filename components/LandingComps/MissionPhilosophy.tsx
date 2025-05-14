@@ -58,7 +58,7 @@ export default function MissionPhilosophySection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
-      className="relative py-20 md:py-10"
+      className="relative py-5 md:py-10"
       id="mission-philosophy"
     >
       {/* Decorative background elements */}
@@ -173,6 +173,8 @@ export default function MissionPhilosophySection() {
                 } -bottom-12 w-40 h-40 rounded-full bg-gradient-radial opacity-20`}
               ></div>
 
+              <div className="flex flex-row md:flex-col justify-between items-center">
+
               <div
                 className="mb-6 w-14 h-14 rounded-xl flex items-center justify-center shadow-glow"
                 style={{
@@ -213,9 +215,11 @@ export default function MissionPhilosophySection() {
               >
                 {content.title}
               </h3>
+              </div>
+
 
               <p
-                className="text-lg leading-relaxed"
+                className="text-lg leading-5 md:leading-relaxed"
                 style={{ color: "var(--color-text-muted)" }}
               >
                 {content.description}

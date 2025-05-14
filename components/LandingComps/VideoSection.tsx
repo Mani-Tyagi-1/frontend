@@ -13,7 +13,7 @@ export default function VideoSection() {
 
   return (
     <section
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden "
+      className=" relative h-[50vh] md:h-screen w-full flex items-center justify-center overflow-hidden "
       style={{
         cursor: `url('https://i.pinimg.com/474x/97/a8/cd/97a8cd53975b3bcb480a535f6cbc8b6c.jpg'), auto`,
       }}

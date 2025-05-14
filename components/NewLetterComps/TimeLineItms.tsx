@@ -82,11 +82,11 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   };
 
   return (
-    <div ref={ref} className="relative w-full mb-12 last:mb-0">
+    <div ref={ref} className="relative w-full mb-16 last:mb-0">
       {/* --- Mobile Layout (Vertical Stack) --- */}
       <div className="md:hidden flex flex-col w-full">
         {/* Mobile Date Marker & Line */}
-        <div className="flex items-center mb-4">
+        <div className="flex items-center mb-2">
           <motion.div
             initial="hidden"
             animate={controls}
@@ -101,10 +101,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
               initial="hidden"
               animate={controls}
               variants={lineVariants}
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b from-blue-500 to-blue-300 ${
+              className={` md:block hidden absolute top-full left-1/2 transform  -translate-x-1/2 w-0.5 h-[60px] bg-gradient-to-b from-blue-500 to-blue-300 ${
                 index === totalItems - 1 ? "hidden" : ""
               }`}
-              style={{ height: "60px" }}
+              // style={{ height: "60px" }}
             ></motion.div>
           </motion.div>
           <div className="flex-grow border-t-2 border-blue-300/30 ml-4"></div>
