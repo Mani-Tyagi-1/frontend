@@ -96,8 +96,8 @@ export default function Team() {
               <div className="lg:flex lg:justify-start lg:items-start w-40 h-1 max-lg:w-24 bg-gradient-animation rounded-full mx-auto mt-2"></div>
             </h1>
           </div>
-            <div className="text-black">
-          <AnimatedTestimonials testimonials={testimonials} />
+          <div className="text-black">
+            <AnimatedTestimonials testimonials={testimonials} />
           </div>
         </div>
       </div>

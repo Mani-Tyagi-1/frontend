@@ -60,8 +60,7 @@ export default function WorkTimeline() {
   return (
     // how we work and pur 4 stages coming from the component
     <div className="relative w-full overflow-clip bg-white p-6">
-      <Timeline data={data}  />
+      <Timeline data={data} />
     </div>
-    
   );
 }

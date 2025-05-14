@@ -1,17 +1,22 @@
 "use client";
-import { useScroll, useTransform, motion } from "motion/react";
+import { Badge } from "lucide-react";
+import {
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+  motion,
+} from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   title: string;
-  content: React.ReactElement<{ onImageClick?: (src: string) => void }>;
+  content: React.ReactNode;
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
-  const [modalImage, setModalImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (ref.current) {
@@ -21,98 +26,83 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
-    container: containerRef,
-    target: ref,
-    offset: ["start start", "end end"],
+    target: containerRef,
+    offset: ["start 10%", "end 50%"],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
-
-  const handleImageClick = (src: string) => {
-    setModalImage(src);
-  };
-
-  const handleCloseModal = () => {
-    setModalImage(null);
-  };
-
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      handleCloseModal();
-    }
-  };
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <div
-      className="w-full font-sans md:px-4 h-[100vh] overflow-y-auto relative"
+      className="w-full bg-white/50 md:px-10"
       ref={containerRef}
     >
-      <div ref={ref} className="relative max-w-8xl mx-auto pb-20 ">
+      {/* <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+        
+        <h2 className="text-lg md:text-4xl mb-4 text-black max-w-4xl">
+          How we Work
+        </h2>
+        <h2 className="text-black text-sm md:text-base max-w-sm">
+          Our 4 Stage Work Process
+        </h2>
+      </div> */}
+
+      <div className="relative max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+  {/* Blue Blurred Circle Positioned Top-Left */}
+  <div className="absolute top-[-20px] left-[-80px] h-[280px] w-[280px] rounded-full bg-blue-400 opacity-70 blur-2xl z-0" />
+
+  {/* Content placed above the background */}
+  <div className="relative z-20 ">
+    <h2 className="text-lg md:text-4xl mb-4 text-black max-w-4xl font-bold">
+      How we Work
+    </h2>
+    <h2 className="text-black/70 text-sm md:text-base max-w-sm font-bold px-5">
+      Our 4 Stage Work Process
+    </h2>
+  </div>
+</div>
+
+
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-20 font-black ">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start ">
-            <div className="sticky  flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
+          <div
+            key={index}
+            className="flex justify-start pt-10 md:pt-40 md:gap-10 text-xl"
+          >
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full bg-neutral-200 border border-neutral-300 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-neutral-500 dark:text-neutral-500 ">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-black">
                 {item.title}
               </h3>
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
+              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-black">
                 {item.title}
               </h3>
-              {React.cloneElement(item.content, {
-                onImageClick: handleImageClick,
-              })}
+              {item.content}
             </div>
           </div>
         ))}
-
-        {/* Vertical timeline progress line */}
         <div
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[4px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[4px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
           />
+          
         </div>
       </div>
-
-      {/* Modal */}
-      {modalImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
-          onClick={handleOverlayClick}
-        >
-          <div className="relative max-w-4xl w-full px-4">
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-2 right-6 text-white bg-black/70 rounded-full px-3 py-1 text-sm"
-            >
-              ✕
-            </button>
-            <div className="relative p-[10px] rounded-xl overflow-hidden bg-[conic-gradient(from_0deg,skyblue,blue,skyblue)] animate-spin-slow-glow">
-              <div className="bg-white rounded-xl">
-                <img
-                  src={modalImage}
-                  alt="Zoomed"
-                  className="w-full max-h-[70vh] object-contain rounded-xl shadow-xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
