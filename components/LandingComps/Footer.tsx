@@ -147,10 +147,10 @@ const menuLinks = [
 ];
 
 const serviceLinksData = [
-  { name: "Web Development", href: "/services/web-development" },
-  { name: "UI/UX Design", href: "/services/ui-ux-design" },
-  { name: "Branding", href: "/services/branding" },
-  { name: "SEO & Marketing", href: "/services/seo-marketing" },
+  { name: "ACECQA", href: "/services/web-development" },
+  { name: "CCS", href: "/services/ui-ux-design" },
+  { name: "CCS Calculator", href: "/services/branding" },
+  { name: "Starting Block", href: "/services/seo-marketing" },
 ];
 
 const legalLinksData = [

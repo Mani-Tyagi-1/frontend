@@ -8,121 +8,156 @@ import {
   MotionValue,
 } from "framer-motion";
 
+import  TestimonialCard from "./TestimonialCards";
+
 const products = [
   {
-    title: "Creative Learning",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Safe Spaces",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Playful Education",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Family Engagement",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Early Literacy",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Wellness Focus",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Community Ties",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Outdoor Fun",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods1",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods2",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods4",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Method3s",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Metho33ds",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods5",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods6",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods7",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods8",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
   {
-    title: "Innovative Methods09",
-    link: "#",
-    thumbnail:
-      "https://img.freepik.com/premium-vector/kids-playing-entertaining-moments-vector-illustration_1287274-36010.jpg?semt=ais_hybrid&w=740",
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
+  },
+  {
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
+  },
+  {
+    name: "Sarah Thompson",
+    review:
+      "This childcare service has been life-changing. My son loves the staff, and I feel confident in the education he's receiving.",
+    rating: 5,
+    date: "2024-12-20T09:00:00Z",
   },
 ];
 
+
 export default function Hero() {
-  const firstRow = products.slice(0, 10);
-  const secondRow = products.slice(7, 12);
-  const thirdRow = products.slice(13, 18);
+  const firstRow = products.slice(0, 5);
+  const secondRow = products.slice(6, 11);
+  const thirdRow = products.slice(12, 17);
 
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
@@ -183,11 +218,12 @@ export default function Hero() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
           {firstRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+            // <ProductCard
+            //   product={product}
+            //   translate={translateX}
+            //   key={product.title}
+            // />
+            <TestimonialCard testimonial={product} key={product.name} />
           ))}
         </motion.div>
 
@@ -197,11 +233,12 @@ export default function Hero() {
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         >
           {secondRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateXReverse}
-              key={product.title}
-            />
+            // <ProductCard
+            //   product={product}
+            //   translate={translateXReverse}
+            //   key={product.title}
+            <TestimonialCard testimonial={product} key={product.name} />
+            // />
           ))}
         </motion.div>
 
@@ -211,11 +248,7 @@ export default function Hero() {
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
         >
           {thirdRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+            <TestimonialCard testimonial={product} key={product.name} />
           ))}
         </motion.div>
       </motion.div>
