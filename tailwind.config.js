@@ -8,6 +8,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      
       animation: {
         "scroll-right": "scrollRight 20s linear infinite",
 
