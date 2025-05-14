@@ -10,7 +10,8 @@ const GradientBlobBackground = () => {
   return (
     <>
       {/* Gradient Blobs */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-animation opacity-30 blur-3xl transform translate-x-1/4 -translate-y-1/4" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-animation opacity-30 blur-3xl transform -translate-x-1/4" />
         <div className="absolute top-1/2 left-1/2 w-80 h-80 rounded-full bg-gradient-radial opacity-20 blur-2xl transform -translate-x-1/2 -translate-y-1/2" />
@@ -33,14 +34,16 @@ const GradientBlobBackground = () => {
 
   return (
     <div className="h-[60vh] w-full relative" >
-        <section
+        {/* <section
       className="relative w-full py-20 px-20 md:py-10 overflow-hidden"
       style={{
         backgroundColor: "var(--color-background)",
         color: "var(--color-text)",
       }}
-    >
-        <GradientBlobBackground />
+    > */}
+    <section className="relative w-full py-20 px-20 md:py-10 overflow-hidden bg-transparent text-white">
+
+        {/* <GradientBlobBackground /> */}
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -50,12 +53,13 @@ const GradientBlobBackground = () => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="mt-5 bg-gradient-to-br from-black to-gray-800 py-4 bg-clip-text text-center text-4xl font-semibold tracking-widest text-transparent md:text-7xl"
+          // className="mt-5 bg-gradient-to-br from-black to-gray-800 py-4 bg-clip-text text-center text-4xl font-semibold tracking-widest text-transparent md:text-7xl"
+           className="mt-5 py-4 text-center text-4xl font-semibold tracking-widest text-white md:text-7xl"
         >
           
           Nurture Notes
           <br />
-          <p className="text-2xl font-light mt-10 tracking-widest text-gray-800">
+          <p className="text-2xl font-black mt-10 tracking-widest text-white/100">
             "Learn. Reflect. Bloom."
           </p>
         </motion.h1>
@@ -63,6 +67,14 @@ const GradientBlobBackground = () => {
 
       </section>
 
+      
+
     </div>
+
+    // testing purpose bg 
+
+
+
+
   );
 }
