@@ -8,8 +8,8 @@ const navLinks = [
   { name: "HOME", href: "/" },
   { name: "ABOUT", href: "/about" },
   { name: "GALLERY", href: "/gallery" },
-  { name: "MEMBERS", href: "/projects" },
-  { name: "EDUCATORS", href: "/reviews" },
+  { name: "BLOGS", href: "/blog" },
+  { name: "NEWSLETTER", href: "/newsletter" },
   { name: "GUIDE", href: "/blog" },
   { name: "CONTACT", href: "/contact" },
 ];
@@ -83,7 +83,6 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              
               className="relative text-xs font-medium transition duration-300 ease-in-out px-3 py-2 rounded-full"
               style={{
                 color:
