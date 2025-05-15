@@ -53,13 +53,13 @@ const GradientBlobBackground = () => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          // className="mt-5 bg-gradient-to-br from-black to-gray-800 py-4 bg-clip-text text-center text-4xl font-semibold tracking-widest text-transparent md:text-7xl"
-           className="mt-5 py-4 text-center text-4xl font-semibold tracking-widest text-white md:text-7xl"
+         
+           className="mt-5 py-4 text-center text-4xl font-bold tracking-widest text-slate-900 md:text-7xl"
         >
           
           Nurture Notes
           <br />
-          <p className="text-2xl font-black mt-10 tracking-widest text-white/100">
+          <p className="text-2xl font-black mt-10 tracking-widest text-gray-700">
             "Learn. Reflect. Bloom."
           </p>
         </motion.h1>
